@@ -1,6 +1,49 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Home() {
+  return (
+    <main className="relative flex flex-col items-center justify-center min-h-screen px-4 text-white bg-black overflow-hidden">
+      {/* Blurred background overlay */}
+      <div className="absolute inset-0 bg-[url('/treeblur.jpg')] bg-cover bg-center opacity-10 blur-lg z-0" />
+
+      {/* Foreground content */}
+      <motion.div 
+        className="relative z-10 text-center max-w-3xl"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Image
+          src="/madhav-profile.png"
+          alt="Madhav Sankar"
+          width={120}
+          height={120}
+          className="mx-auto rounded-full shadow-lg"
+        />
+        <h1 className="text-4xl md:text-6xl font-extrabold mt-4">Madhav Sankar</h1>
+        <p className="text-lg md:text-2xl mt-4 text-gray-300">
+          Biomedical Informatics | Data Scientist | AI & ML Researcher
+        </p>
+        <p className="mt-2 text-sm text-gray-400">Masters @ ASU · BTech @ VIT Vellore</p>
+      </motion.div>
+
+      {/* Scroll down indicator */}
+      <motion.div
+        className="absolute bottom-10 text-sm text-gray-400 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
+        ↓ Scroll to explore my portfolio ↓
+      </motion.div>
+    </main>
+  );
+}
+
+ {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -101,3 +144,7 @@ export default function Home() {
     </div>
   );
 }
+pico app/page.tsx
+
+
+
